@@ -2,7 +2,7 @@
 **EPITECH PROJECT, 2017
 **File description:
 ** @Last Modified by:   Neo
-** @Last Modified time: 2018-01-17 11:31:09
+** @Last Modified time: 2018-01-17 11:49:13
 */
 #include <stdio.h>
 #include <stdlib.h>
@@ -40,11 +40,10 @@ int exec(char **params, char **ev)
 	}
 	}
 	else {
-		char *env_args[] = {"PATH=/bin", (char*)0};
 		char *path = malloc(sizeof(char) * my_strlen(params[0]) + 5);
 		path = my_strcat(path, "/bin/");
 		path = my_strcat(path, params[0]);
-		execve(path, params, env_args);
+		execve(path, params, ev);
 	}
 	return 0;
 }
