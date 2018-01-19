@@ -2,7 +2,7 @@
 **EPITECH PROJECT, 2017
 **File description:
 ** @Last Modified by:   Neo
-** @Last Modified time: 2018-01-17 10:30:04
+** @Last Modified time: 2018-01-19 09:50:22
 */
 
 #include <stdio.h>
@@ -49,8 +49,8 @@ void stuff(char *comands, char **ev)
 	arr_to_list(&head, ev, i);
 	switch(parse(coms[0])) {
 		case 1:
-			if (ret = chdir(coms[1]) == 1)
-				perror("chdir");
+			if (ret = chdir(coms[1]) != 0)
+				my_printf("%s: No such file or directory\n", coms[0]);
 			break;
 		case 2:
 			ev = my_setenv(coms[1], coms[2], ev);
