@@ -2,11 +2,12 @@
 **EPITECH PROJECT, 2017
 **File description:
 ** @Last Modified by:   Neo
-** @Last Modified time: 2018-01-17 10:09:13
+** @Last Modified time: 2018-01-19 15:29:29
 */
 #include <list.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <stdlib.h>
 
 env *get_nth(env* head, int n)
 {

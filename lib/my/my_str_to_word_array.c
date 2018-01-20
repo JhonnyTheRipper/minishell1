@@ -30,7 +30,7 @@ char	**my_str_to_word_array(char const *str)
 	max = my_spe(str);
 	char **array = (char**) malloc(sizeof(char*) * max);
 	for (int p = 0; p < max; p++) {
-		array[p] = (char*) malloc(sizeof(char*) * p * 10);
+		array[p] = (char*) malloc(sizeof(char*) * p * my_strlen(str));
 	}
 	
 	for (x; x <= my_strlen(str); x++) {

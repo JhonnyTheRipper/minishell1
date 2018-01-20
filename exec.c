@@ -2,13 +2,29 @@
 **EPITECH PROJECT, 2017
 **File description:
 ** @Last Modified by:   Neo
-** @Last Modified time: 2018-01-19 10:13:39
+** @Last Modified time: 2018-01-19 15:26:53
 */
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/types.h>
+#include <list.h>
 #include <sys/wait.h>
+
+char *check(char *params)
+{
+	char *res = malloc(sizeof(char) * my_strlen(params) + 5);
+	if (params[0] == '.' && params[1] == '/')
+			res = params;
+	else if (params[0] == '/') {
+		res = params;
+	} else {
+		res = my_strcat(res, "/bin/");
+		res = my_strcat(res, params);
+	}
+	return res;
+}
+
 
 int calculate(char **params)
 {
@@ -30,6 +46,7 @@ char **print(char **av)
 int exec(char **params, char **ev)
 {
 	int pid;
+	char *path;
 	int status;
 	int es;
 	pid = fork();
@@ -39,17 +56,11 @@ int exec(char **params, char **ev)
 	}
 	}
 	else {
-		char *path = malloc(sizeof(char) * my_strlen(params[0]) + 5);
-		if (params[0][0] == '.' && params[0][1] == '/')
-			path = params[0];
-		else if (params[0][0] == '/') {
-			path = params[0];
-		}
-		else {
-			path = my_strcat(path, "/bin/");
-			path = my_strcat(path, params[0]);
-		}
+		path = check(params[0]);
+		if (access(path, 0))
+			my_printf("%s: command not found\n",params[0]);
 		execve(path, params, ev);
+		exit(0);
 	}
 	return 0;
 }

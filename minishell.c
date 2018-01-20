@@ -2,7 +2,7 @@
 **EPITECH PROJECT, 2017
 **File description:
 ** @Last Modified by:   Neo
-** @Last Modified time: 2018-01-19 09:50:22
+** @Last Modified time: 2018-01-20 13:34:44
 */
 
 #include <stdio.h>
@@ -12,26 +12,28 @@
 #define YELLOW  "\x1b[33m"
 #define RESET   "\x1b[0m"
 
-char **my_setenv(char *name, char *value, char **ev)
+int spe_strcmp(char *to_com, char *str)
 {
-	return ev;
-}
-
-char  **my_unsetenv(char *name, char **ev)
-{
-	return ev;
+	int i = 0;
+	int m = 0;
+	while (str[i]) {
+		if (to_com[i] == str[i])
+			m++;
+		i++;
+	}
+	if (m == my_strlen(to_com))
+		return 0;
 }
 
 int parse(char *com)
 {
-
 	if (my_strcmp(com, "cd") == 0) {
 		return 1;
 	}
-	if (my_strcmp(com, "setenv\n") == 0) {
+	if (spe_strcmp(com, "setenv") == 0) {
 		return 2;
 	}
-	if (my_strcmp(com, "unsetenv\n") == 0) {
+	if (spe_strcmp(com, "unsetenv") == 0) {
 		return 3;
 	}
 	if (my_strcmp(com, "env\n") == 0) {
@@ -40,26 +42,48 @@ int parse(char *com)
 	else return 5;
 }
 
-void stuff(char *comands, char **ev)
+char *shatp(char *str, env **head)
+{
+	if (str[0] == NULL || str[0] != '-')
+		return str;
+	char cwd[1024];
+	env *he = *head;
+	char *res;
+	int i = 0;
+	while (he->line[0] != 'O' && he->line[1] != 'L') {
+		he = he->next;
+	}
+	res = copy(he->line);
+	getcwd(cwd, sizeof(cwd));
+	char *temp = malloc(sizeof(char) * my_strlen(cwd) + 9);
+	temp = my_strcat(temp, "OLDPWD=");
+	temp = my_strcat(temp, cwd);
+	he->line = replace(he->line, temp);
+	free (temp);
+	return res;
+}
+
+void stuff(char *comands, char **ev, env **head)
 {
 	char **coms = my_str_to_word_array(comands);
 	int ret;
-	int i = get_size(ev);
-	env *head = NULL;
-	arr_to_list(&head, ev, i);
+	int i;
+	char *dir;
 	switch(parse(coms[0])) {
 		case 1:
-			if (ret = chdir(coms[1]) != 0)
+			dir = shatp(coms[1], head);
+			if (ret = chdir(dir) != 0)
 				my_printf("%s: No such file or directory\n", coms[0]);
 			break;
 		case 2:
-			ev = my_setenv(coms[1], coms[2], ev);
+			my_setenv(coms[1], coms[2], &head);
 			break;
 		case 3:
-			ev = my_unsetenv(coms[1], ev);
+			i = my_unsetenv(coms[1], head);
+			delete_nth(&head, i);
 			break;
 		case 4:
-			print_ll(head);
+			print_ll(*head);
 			break;
 		case 5:
 			exec(coms, ev);
@@ -72,13 +96,16 @@ int main(int ac, char **av, char **ev)
 	char **temp = ev;
 	char *buffer;
 	size_t size = 0;
+	int i = get_size(ev);
+	env* head = NULL;
+	arr_to_list(&head, ev, i);
 	while (1) {
 		my_printf(YELLOW"[username@userprofile] $> "RESET);
 		getline(&buffer, &size, stdin);
 		if (my_strcmp(buffer, "exit\n") == 0)
 			break;
 		else
-			stuff(buffer, ev);
+			stuff(buffer, ev, &head);
 	}
 	ev = temp;
 	return 0;

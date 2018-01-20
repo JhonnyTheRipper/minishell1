@@ -24,6 +24,7 @@ SRCS	=	my_printf.c	\
 		my_getnbr.c	\
 		my_strcmp.c	\
 		my_str_to_word_array.c	\
+		my_strcpy.c	\
 
 OBJS	=	$(SRCS:.c=.o)
 
