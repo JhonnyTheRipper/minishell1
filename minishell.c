@@ -2,7 +2,7 @@
 **EPITECH PROJECT, 2017
 **File description:
 ** @Last Modified by:   Neo
-** @Last Modified time: 2018-01-20 13:34:44
+** @Last Modified time: 2018-01-20 13:56:31
 */
 
 #include <stdio.h>
@@ -36,7 +36,7 @@ int parse(char *com)
 	if (spe_strcmp(com, "unsetenv") == 0) {
 		return 3;
 	}
-	if (my_strcmp(com, "env\n") == 0) {
+	if (my_strcmp(com, "env") == 0) {
 		return 4;
 	}
 	else return 5;
@@ -79,11 +79,10 @@ void stuff(char *comands, char **ev, env **head)
 			my_setenv(coms[1], coms[2], &head);
 			break;
 		case 3:
-			i = my_unsetenv(coms[1], head);
-			delete_nth(&head, i);
+			my_unsetenv(coms[1], head);
 			break;
 		case 4:
-			print_ll(*head);
+			print_ll(head);
 			break;
 		case 5:
 			exec(coms, ev);

@@ -2,7 +2,7 @@
 **EPITECH PROJECT, 2017
 **File description:
 ** @Last Modified by:   Neo
-** @Last Modified time: 2018-01-20 13:37:34
+** @Last Modified time: 2018-01-20 13:47:26
 */
 #include <list.h>
 #include <stdio.h>
@@ -56,18 +56,23 @@ void my_setenv(char *name, char *param, env **head)
 	printf("SE %s\n", name);
 }
 
-int my_unsetenv(char *name, const env *head)
+int my_unsetenv(char *name, const env **head)
 {
 	int i = 0;
-	while (head) {
-		if (special_comp(name, head->line) == 1)
+	env *he = *head;
+	while (he) {
+		if (special_comp(name, he->line) == 1)
 			break;
 		i++;
-		head = head->next;
+		he = he->next;
 	}
-	if (head->next == NULL)
+	if (he->next == NULL)
 		return;
-	return i;
+
+	env *prev = get_nth(*head, i-1);
+	env *elm = prev->next;
+	prev->next = elm->next;
+	free (elm);
 }
 
 int get_size(char **ev)
