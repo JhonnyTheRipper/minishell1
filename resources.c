@@ -2,7 +2,7 @@
 **EPITECH PROJECT, 2017
 **File description:
 ** @Last Modified by:   Neo
-** @Last Modified time: 2018-01-20 13:47:26
+** @Last Modified time: 2018-01-21 10:19:12
 */
 #include <list.h>
 #include <stdio.h>
@@ -49,11 +49,6 @@ int special_comp(char *name, char *where)
 	if (d == my_strlen(name))
 		return 1;
 	return 0;
-}
-
-void my_setenv(char *name, char *param, env **head)
-{
-	printf("SE %s\n", name);
 }
 
 int my_unsetenv(char *name, const env **head)

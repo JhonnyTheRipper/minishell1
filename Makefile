@@ -16,6 +16,7 @@ SRCS	=	minishell.c \
 			lis_res_bis.c 	\
 			resources.c \
 			exec.c \
+			res_bis.c 	\
 
 OBJS	=	$(SRCS:.c=.o)
 

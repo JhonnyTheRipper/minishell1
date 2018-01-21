@@ -2,7 +2,7 @@
 **EPITECH PROJECT, 2017
 **File description:
 ** @Last Modified by:   Neo
-** @Last Modified time: 2018-01-20 13:56:31
+** @Last Modified time: 2018-01-21 10:53:11
 */
 
 #include <stdio.h>
@@ -76,7 +76,7 @@ void stuff(char *comands, char **ev, env **head)
 				my_printf("%s: No such file or directory\n", coms[0]);
 			break;
 		case 2:
-			my_setenv(coms[1], coms[2], &head);
+			my_setenv(coms[1], coms[2], head);
 			break;
 		case 3:
 			my_unsetenv(coms[1], head);
@@ -106,6 +106,7 @@ int main(int ac, char **av, char **ev)
 		else
 			stuff(buffer, ev, &head);
 	}
+	destroy_list(&head);
 	ev = temp;
 	return 0;
 }
