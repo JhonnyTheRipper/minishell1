@@ -2,13 +2,15 @@
 **EPITECH PROJECT, 2017
 **File description:
 ** @Last Modified by:   Neo
-** @Last Modified time: 2018-01-21 11:16:39
+** @Last Modified time: 2018-01-21 13:50:03
 */
 
 #include <stdio.h>
 #include <unistd.h>
+#include <errno.h>
 #include <stdlib.h>
 #include <list.h>
+#include <string.h>
 #define YELLOW  "\x1b[33m"
 #define RESET   "\x1b[0m"
 
@@ -72,7 +74,8 @@ void stuff(char *comands, char **ev, env **head)
 		case 1:
 			dir = shatp(coms[1], head);
 			if (ret = chdir(dir) != 0)
-				my_printf("%s: No such file or directory\n", coms[0]);
+				printf("%s: %s\n",dir, strerror(errno));
+				//my_printf("%s: No such file or directory\n", coms[0]);
 			break;
 		case 2:
 			my_setenv(coms[1], coms[2], head);
