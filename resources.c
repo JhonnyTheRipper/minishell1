@@ -2,10 +2,11 @@
 **EPITECH PROJECT, 2017
 **File description:
 ** @Last Modified by:   Neo
-** @Last Modified time: 2018-01-21 10:19:12
+** @Last Modified time: 2018-01-21 11:13:19
 */
 #include <list.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 char *copy(char *line)
 {
@@ -26,7 +27,7 @@ char *copy(char *line)
 	return res;
 }
 
-char *replace(char *dest, char *src)
+char *replace(char *src)
 {
 	char *res = malloc(sizeof(char) * my_strlen(src));
 	int i = 0;
@@ -51,7 +52,7 @@ int special_comp(char *name, char *where)
 	return 0;
 }
 
-int my_unsetenv(char *name, const env **head)
+void my_unsetenv(char *name, env **head)
 {
 	int i = 0;
 	env *he = *head;
@@ -63,7 +64,6 @@ int my_unsetenv(char *name, const env **head)
 	}
 	if (he->next == NULL)
 		return;
-
 	env *prev = get_nth(*head, i-1);
 	env *elm = prev->next;
 	prev->next = elm->next;

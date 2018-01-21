@@ -2,7 +2,7 @@
 **EPITECH PROJECT, 2017
 **File description:
 ** @Last Modified by:   Neo
-** @Last Modified time: 2018-01-21 10:53:11
+** @Last Modified time: 2018-01-21 11:16:39
 */
 
 #include <stdio.h>
@@ -23,6 +23,7 @@ int spe_strcmp(char *to_com, char *str)
 	}
 	if (m == my_strlen(to_com))
 		return 0;
+	else return 1;
 }
 
 int parse(char *com)
@@ -44,12 +45,11 @@ int parse(char *com)
 
 char *shatp(char *str, env **head)
 {
-	if (str[0] == NULL || str[0] != '-')
+	if (str[0] == 0 || str[0] != '-')
 		return str;
 	char cwd[1024];
 	env *he = *head;
 	char *res;
-	int i = 0;
 	while (he->line[0] != 'O' && he->line[1] != 'L') {
 		he = he->next;
 	}
@@ -58,7 +58,7 @@ char *shatp(char *str, env **head)
 	char *temp = malloc(sizeof(char) * my_strlen(cwd) + 9);
 	temp = my_strcat(temp, "OLDPWD=");
 	temp = my_strcat(temp, cwd);
-	he->line = replace(he->line, temp);
+	he->line = replace(temp);
 	free (temp);
 	return res;
 }
@@ -67,7 +67,6 @@ void stuff(char *comands, char **ev, env **head)
 {
 	char **coms = my_str_to_word_array(comands);
 	int ret;
-	int i;
 	char *dir;
 	switch(parse(coms[0])) {
 		case 1:

@@ -11,6 +11,7 @@
 
 void print_char(int c);
 void print_dec(int nb);
+void my_putchar(char c);
 void  print_decu(unsigned int nb);
 void  print_oct(unsigned int nb);
 void  print_hex(unsigned int nb, int mm);

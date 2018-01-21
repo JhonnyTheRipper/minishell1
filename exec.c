@@ -2,7 +2,7 @@
 **EPITECH PROJECT, 2017
 **File description:
 ** @Last Modified by:   Neo
-** @Last Modified time: 2018-01-19 15:26:53
+** @Last Modified time: 2018-01-21 11:06:35
 */
 #include <stdio.h>
 #include <stdlib.h>
@@ -35,20 +35,11 @@ int calculate(char **params)
 	return i-1;
 }
 
-char **print(char **av)
-{
-	char **params = my_str_to_word_array(av[1]);
-	int nb = calculate(params);
-	int pid = getpid();
-	return params;
-}
-
 int exec(char **params, char **ev)
 {
 	int pid;
 	char *path;
 	int status;
-	int es;
 	pid = fork();
 	if (pid != 0) {
 		waitpid(pid, &status, 0);

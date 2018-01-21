@@ -7,6 +7,7 @@
 ** 
 */
 #include <stdlib.h>
+int my_strlen(char *str);
 
 int my_spe(char *str)
 {
@@ -20,7 +21,7 @@ int my_spe(char *str)
 	to_return++;
 	return to_return;
 }
-char	**my_str_to_word_array(char const *str)
+char	**my_str_to_word_array(char *str)
 {
 	int counter = 0;
 	int max;
