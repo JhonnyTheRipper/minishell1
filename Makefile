@@ -27,7 +27,7 @@ all:	$(NAME)
 
 $(NAME):	$(OBJS)
 		cd lib/my && $(MAKE)
-		$(CC) $(OBJS) list.h -o $(NAME) $(CFLAGS) -L lib/my/ -lmy
+		$(CC) $(OBJS) -o $(NAME) $(CFLAGS) -L lib/my/ -lmy
 		$(RM) $(OBJS)
 		$(RM) lib/my/libmy.a
 

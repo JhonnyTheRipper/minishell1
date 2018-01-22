@@ -2,13 +2,13 @@
 **EPITECH PROJECT, 2017
 **File description:
 ** @Last Modified by:   Neo
-** @Last Modified time: 2018-01-21 11:06:35
+** @Last Modified time: 2018-01-22 10:33:16
 */
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/types.h>
-#include <list.h>
+#include <include/my.h>
 #include <sys/wait.h>
 
 char *check(char *params)

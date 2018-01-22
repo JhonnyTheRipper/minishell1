@@ -2,9 +2,9 @@
 **EPITECH PROJECT, 2017
 **File description:
 ** @Last Modified by:   Neo
-** @Last Modified time: 2018-01-21 11:10:23
+** @Last Modified time: 2018-01-22 10:55:54
 */
-#include <list.h>
+#include <include/my.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -52,8 +52,8 @@ void my_setenv(char *name, char *param, env **head)
 		temp = spe_cat(name, param);
 		env *tmp = (env*) malloc(sizeof(env));
 		tmp->line = temp;
-		tmp->next = (*head);
-		(*head) = tmp;
+		tmp->next = NULL;
+		he->next = tmp;
 	}
 	else {
 		temp = spe_cat(name, param);
