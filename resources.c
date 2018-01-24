@@ -2,7 +2,7 @@
 **EPITECH PROJECT, 2017
 **File description:
 ** @Last Modified by:   Neo
-** @Last Modified time: 2018-01-24 10:18:02
+** @Last Modified time: 2018-01-24 10:41:34
 */
 #include <include/my.h>
 #include <stdio.h>
@@ -10,7 +10,7 @@
 
 char *copy(char *line)
 {
-	char *res = malloc(sizeof(char) * my_strlen(line));
+	char *res = malloc(sizeof(char) + my_strlen(line));
 	int i = 0;
 	int d = 0;
 	while (line[i] != '/')

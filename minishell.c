@@ -2,7 +2,7 @@
 **EPITECH PROJECT, 2017
 **File description:
 ** @Last Modified by:   Neo
-** @Last Modified time: 2018-01-24 10:12:14
+** @Last Modified time: 2018-01-24 11:32:00
 */
 
 #include <stdio.h>
@@ -50,6 +50,11 @@ int parse(char *com)
 
 char *shatp(char *str, env **head)
 {
+	if (str == NULL) {
+		char *temp = malloc(sizeof(char) * 10);
+		temp = my_strcat(temp, "/home");
+		return temp;
+	}
 	if (str[0] == 0 || str[0] != '-')
 		return str;
 	char cwd[1024];
@@ -63,6 +68,7 @@ char *shatp(char *str, env **head)
 	char *temp = malloc(sizeof(char) * my_strlen(cwd) + 9);
 	temp = my_strcat(temp, "OLDPWD=");
 	temp = my_strcat(temp, cwd);
+	printf("%s\n", heb->line);
 	he->line = replace(temp);
 	free (temp);
 	return res;
