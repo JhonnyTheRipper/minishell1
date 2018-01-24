@@ -2,7 +2,7 @@
 **EPITECH PROJECT, 2017
 **File description:
 ** @Last Modified by:   Neo
-** @Last Modified time: 2018-01-24 11:35:16
+** @Last Modified time: 2018-01-24 19:16:27
 */
 
 #include <stdio.h>
@@ -83,6 +83,7 @@ void stuff(char *comands, char **ev, env **head)
 			dir = shatp(coms[1], head);
 			if (ret = chdir(dir) != 0)
 				my_printf("%s: %s\n",dir, strerror(errno));
+			my_setenv("PWD", dir, head);
 				break;
 		case 2:
 			my_setenv(coms[1], coms[2], head);
