@@ -2,7 +2,7 @@
 **EPITECH PROJECT, 2017
 **File description:
 ** @Last Modified by:   Neo
-** @Last Modified time: 2018-01-24 11:32:00
+** @Last Modified time: 2018-01-24 11:35:16
 */
 
 #include <stdio.h>
@@ -68,7 +68,6 @@ char *shatp(char *str, env **head)
 	char *temp = malloc(sizeof(char) * my_strlen(cwd) + 9);
 	temp = my_strcat(temp, "OLDPWD=");
 	temp = my_strcat(temp, cwd);
-	printf("%s\n", heb->line);
 	he->line = replace(temp);
 	free (temp);
 	return res;
