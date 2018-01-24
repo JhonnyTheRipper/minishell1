@@ -2,7 +2,7 @@
 **EPITECH PROJECT, 2017
 **File description:
 ** @Last Modified by:   Neo
-** @Last Modified time: 2018-01-22 10:33:21
+** @Last Modified time: 2018-01-24 10:18:02
 */
 #include <include/my.h>
 #include <stdio.h>
@@ -54,6 +54,10 @@ int special_comp(char *name, char *where)
 
 void my_unsetenv(char *name, env **head)
 {
+	if (name == NULL) {
+		my_printf("unsetenv: Too few arguments.\n");
+		return;
+	}
 	int i = 0;
 	env *he = *head;
 	while (he) {

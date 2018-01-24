@@ -2,7 +2,7 @@
 **EPITECH PROJECT, 2017
 **File description:
 ** @Last Modified by:   Neo
-** @Last Modified time: 2018-01-22 10:33:09
+** @Last Modified time: 2018-01-24 10:12:14
 */
 
 #include <stdio.h>
@@ -40,6 +40,9 @@ int parse(char *com)
 		return 3;
 	}
 	if (my_strcmp(com, "env") == 0) {
+		return 4;
+	}
+	if (my_strcmp(com, "printenv") == 0) {
 		return 4;
 	}
 	else return 5;

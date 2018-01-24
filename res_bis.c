@@ -2,7 +2,7 @@
 **EPITECH PROJECT, 2017
 **File description:
 ** @Last Modified by:   Neo
-** @Last Modified time: 2018-01-22 10:55:54
+** @Last Modified time: 2018-01-24 10:17:28
 */
 #include <include/my.h>
 #include <stdio.h>
@@ -42,7 +42,17 @@ char *spe_cat(char *src, char *src3)
 void my_setenv(char *name, char *param, env **head)
 {
 	env *he = *head;
-	char *temp = malloc(sizeof(char) + my_strlen(name) + my_strlen(param) + 5);
+	if (param == NULL && name == NULL) {
+		while (he) {
+			my_printf("%s\n", he->line);
+			he = he->next;
+		}
+		return;
+	}
+
+	char *temp;
+	if ( temp = malloc(sizeof(char) + my_strlen(name) + my_strlen(param) + 5) == NULL)
+		return;
 	while (he->next != NULL) {
 		if (my_strncm(name, he->line, my_strlen(name)) == 0)
 			break;
