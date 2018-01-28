@@ -21,6 +21,15 @@ int my_spe(char *str)
 	to_return++;
 	return to_return;
 }
+
+int alpha(char c)
+{
+	if (64 < c < 91 && 96 < c < 123)
+		return 0;
+	else
+		return 1;
+}
+
 char	**my_str_to_word_array(char *str)
 {
 	int counter = 0;
@@ -33,19 +42,16 @@ char	**my_str_to_word_array(char *str)
 	for (int p = 0; p < max; p++) {
 		array[p] = (char*) malloc(sizeof(char*) * p * my_strlen(str));
 	}
-	
-	for (x; x <= my_strlen(str); x++) {
-		if (str[x] != '\n' && str[x] != ' ') {
+	while (str[x]) {
+		w = 0;
+		while (str[x] == ' ' || str[x] == '\t' || str[x] == 10)
+			x++;
+		while (str[x] != 0 && str[x] != ' ' && str[x] != 10 && str[x] != '\t') {
 			array[z][w] = str[x];
 			w++;
+			x++;
 		}
-		 else if (z < max) {
-				z++;
-				w = 0;
-		}
-		if (z == max)
-			break;
+		z++;
 	}
 	return (array);
-	free(array);
 }
