@@ -27,13 +27,15 @@ all:	$(NAME)
 
 $(NAME):	$(OBJS)
 		cd lib/my && $(MAKE)
-		$(CC) $(OBJS) -o $(NAME) $(CFLAGS) -L lib/my/ -lmy
+		$(CC) $(OBJS) -o $(NAME) $(CFLAGS) -L lib/my/ -lmy -g
 		$(RM) $(OBJS)
 		$(RM) lib/my/libmy.a
 
 clean:
 	$(RM) $(OBJS)
 
+tests_run :
+	cd tests && $(MAKE)
 fclean: clean
 	$(RM) $(OBJS)
 
